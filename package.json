@@ -1,0 +1,11 @@
+{
+  "name": "nz-calc-kit",
+  "version": "1.2.0",
+  "description": "Shared UI kit and helpers for the NZ calculator apps (theme, formatting, AppHeader, HomeHeader, ScreenFooter, SectionHeader, InputField, MetricCard, usePersistedState).",
+  "main": "index.js",
+  "peerDependencies": {
+    "react": "*",
+    "react-native": "*",
+    "@react-native-async-storage/async-storage": "*"
+  }
+}
