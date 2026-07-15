@@ -1,19 +1,19 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS } from '../theme';
-
 // Kit-standard header. `appName` is injected by each app's local AppHeader shim;
 // each screen passes the calculator name as `title` (preferred) or `calculatorName`,
 // plus `onBack`. Render as a SIBLING directly above the ScrollView, inside a navy
 // SafeAreaView.
 //
-// v1.3.0: folded in the larger back-button hitSlop and the 2-line title cap, and
-// adopted the 16/18 vertical padding. `title` is accepted as an alias of
-// `calculatorName` so apps using either prop name work unchanged.
+// v1.4.0: header now respects the device safe-area top inset (notch / camera /
+// status bar) so the title never rides up under the clock on modern phones.
 export default function AppHeader({ appName, title, calculatorName, onBack }) {
+  const insets = useSafeAreaInsets();
   const heading = title || calculatorName;
   return (
-    <View style={styles.header}>
+    <View style={[styles.header, { paddingTop: insets.top + 12 }]}>
       <Text style={styles.appName} numberOfLines={1}>{appName}</Text>
       {heading ? (
         <View style={styles.titleRow}>
@@ -34,12 +34,10 @@ export default function AppHeader({ appName, title, calculatorName, onBack }) {
     </View>
   );
 }
-
 const styles = StyleSheet.create({
   header: {
     backgroundColor: COLORS.navyDark,
     paddingHorizontal: 24,
-    paddingTop: 16,
     paddingBottom: 18,
   },
   appName: {
