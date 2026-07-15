@@ -8,7 +8,7 @@ export default function InputField({
 }) {
   return (
     <View style={styles.container}>
-      {label ? <Text style={styles.label}>{label}</Text> : null}
+      {label ? <Text style={styles.label} numberOfLines={2}>{label}</Text> : null}
       {hint ? <Text style={styles.hint}>{hint}</Text> : null}
       <View style={styles.inputRow}>
         {prefix ? <Text style={styles.prefix}>{prefix}</Text> : null}
@@ -29,7 +29,7 @@ export default function InputField({
 
 const styles = StyleSheet.create({
   container: { marginBottom: 12 },
-  label: { fontSize: 11, color: COLORS.textMuted, marginBottom: 4 },
+  label: { fontSize: 11, color: COLORS.textMuted, marginBottom: 4, minHeight: 28 }, // minHeight reserves 2 label lines so half-width pairs keep their input boxes aligned when one label wraps
   hint: { fontSize: 10, color: COLORS.textMuted, opacity: 0.7, marginBottom: 4, fontStyle: 'italic' },
   inputRow: {
     flexDirection: 'row', alignItems: 'center',
