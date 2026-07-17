@@ -63,3 +63,19 @@ export function formatAxis(value) {
   if (a >= 1e3)  return neg + '$' + Math.round(a / 1e3) + 'k';
   return neg + '$' + Math.round(a);
 }
+
+// ── Percentage formatter: sane ceiling so extreme ratios never print nonsense ───
+// Mirrors the formatCompact clamp philosophy. A mortgage-to-income (or any) ratio
+// beyond ~1000% is meaningless to a user; without a ceiling, tiny-income / huge-loan
+// inputs render absurd values like "379000824403243.8%". Real, sensible ratios show
+// in full to 1 dp; anything past the ceiling collapses to ">999%" (or "<-999%").
+//   formatPct(0.345)  → "34.5%"      formatPct(1.2)     → "120%"
+//   formatPct(3.79e14) → ">999%"     formatPct(-12)     → "<-999%"
+export function formatPct(ratio, dp = 1) {
+  if (ratio === null || ratio === undefined || isNaN(ratio)) return '—';
+  const pct = ratio * 100;
+  if (pct > 999) return '>999%';
+  if (pct < -999) return '<-999%';
+  const s = pct.toFixed(dp).replace(/\.0$/, '');
+  return s + '%';
+}

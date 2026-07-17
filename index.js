@@ -4,7 +4,7 @@
 
 export { COLORS, WEBSITE_URL, DISCLAIMER } from './src/theme';
 export { calloutText } from './src/calloutText';
-export { formatCurrency, formatCurrency2, formatCompact, formatAxis } from './src/format';
+export { formatCurrency, formatCurrency2, formatCompact, formatPct, formatAxis } from './src/format';
 
 export { default as AppHeader } from './src/components/AppHeader';
 export { default as HomeHeader } from './src/components/HomeHeader';

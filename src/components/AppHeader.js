@@ -55,9 +55,10 @@ const styles = StyleSheet.create({
     paddingRight: 12,
   },
   backArrow: {
-    fontSize: 24,
+    fontSize: 30,
     color: COLORS.white,
-    lineHeight: 28,
+    fontWeight: '600',
+    lineHeight: 30,
   },
   title: {
     flex: 1,
