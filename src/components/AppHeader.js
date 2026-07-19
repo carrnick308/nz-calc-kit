@@ -13,7 +13,7 @@ export default function AppHeader({ appName, title, calculatorName, onBack }) {
   const insets = useSafeAreaInsets();
   const heading = title || calculatorName;
   return (
-    <View style={[styles.header, { paddingTop: insets.top + 8 }]}>
+    <View style={[styles.header, { paddingTop: 10 }]}>
       <Text style={styles.appName} numberOfLines={1}>{appName}</Text>
       {heading ? (
         <View style={styles.titleRow}>
