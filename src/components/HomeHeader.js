@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS } from '../theme';
 // Shared home-screen header. title is usually the app name; subtitle is the tagline.
@@ -7,7 +7,7 @@ import { COLORS } from '../theme';
 export default function HomeHeader({ title, subtitle }) {
   const insets = useSafeAreaInsets();
   return (
-    <View style={[styles.header, { paddingTop: 12 }]}>
+    <View style={[styles.header, { paddingTop: Platform.OS === 'android' ? insets.top + 12 : 12 }]}>
       <Text style={styles.title}>{title}</Text>
       {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
     </View>

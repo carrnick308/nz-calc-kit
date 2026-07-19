@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, Platform } from 'react-native';
 import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import { COLORS } from '../theme';
 // Kit-standard header. `appName` is injected by each app's local AppHeader shim;
@@ -13,7 +13,7 @@ export default function AppHeader({ appName, title, calculatorName, onBack }) {
   const insets = useSafeAreaInsets();
   const heading = title || calculatorName;
   return (
-    <View style={[styles.header, { paddingTop: 10 }]}>
+    <View style={[styles.header, { paddingTop: Platform.OS === 'android' ? insets.top + 10 : 10 }]}>
       <Text style={styles.appName} numberOfLines={1}>{appName}</Text>
       {heading ? (
         <View style={styles.titleRow}>
