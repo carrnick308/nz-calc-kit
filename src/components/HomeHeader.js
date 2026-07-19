@@ -7,14 +7,14 @@ import { COLORS } from '../theme';
 export default function HomeHeader({ title, subtitle }) {
   const insets = useSafeAreaInsets();
   return (
-    <View style={[styles.header, { paddingTop: insets.top + 16 }]}>
+    <View style={[styles.header, { paddingTop: insets.top + 10 }]}>
       <Text style={styles.title}>{title}</Text>
       {subtitle ? <Text style={styles.subtitle}>{subtitle}</Text> : null}
     </View>
   );
 }
 const styles = StyleSheet.create({
-  header:   { backgroundColor: COLORS.navyDark, paddingHorizontal: 24, paddingBottom: 28 },
+  header:   { backgroundColor: COLORS.navyDark, paddingHorizontal: 24, paddingBottom: 16 },
   title:    { fontSize: 24, fontWeight: '700', color: COLORS.white, marginBottom: 4 },
   subtitle: { fontSize: 14, color: COLORS.navySubtext },
 });
